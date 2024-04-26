@@ -1,0 +1,31 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const EXPERIENCIE = [
+  {
+    date: "Enero 2023",
+    title: "Desarrollador Front End",
+    company: "Soy Henry",
+    description:
+      "Proyecto grupal trabajado en el bootcamp de Soy Henry. Trabaje en una pagina web de Hosteleria, en el que dedique mi tiempo en el Front End.",
+    link: "https://github.com/IgnacioPerezEtc/Proyecto-Final",
+  },
+  {
+    date: "Diciembre 2022",
+    title: "Desarrollador Full Stack",
+    company: "Soy Henry",
+    description:
+      "Proyecto individual trabajado en el bootcamp de Soy Henry. Trabaje en una pagina web de paises del Mundo, en el que trabaje en el back end como en el front end.",
+      link: "https://github.com/GabrielBustos0905/Proyecto-Individual"
+  },
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCIE.map((experiencie) => (
+      <li class="">
+        <ExperienceItem {...experiencie} />
+      </li>
+    ))
+  }
+</ol>
