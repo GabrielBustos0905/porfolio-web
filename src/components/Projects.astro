@@ -1,0 +1,145 @@
+---
+import GitHubIcon from "./icons/GitHubIcon.astro"
+import NextJSIcon from "./icons/NextJSIcon.astro"
+import TailwindIcon from "./icons/TailwindIcon.astro"
+import ReactIcon from "./icons/ReactIcon.astro"
+import LinkIcon from "./icons/LinkIcon.astro"
+import LinkButton from "./LinkButton.astro"
+import AstroIcon from "./icons/AstroIcon.astro"
+import HtmlIcon from "./icons/HtmlIcon.astro"
+import JsIcon from "./icons/JsIcon.astro"
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJSIcon,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: TailwindIcon,
+  },
+  React: {
+    name: "React js",
+    class: "bg-[#17A7D5] text-white",
+    icon: ReactIcon
+  },
+  ASTRO: {
+    name: "Astro",
+    class: "bg-[#f87b2a] text-white",
+    icon: AstroIcon
+  },
+  HTML: {
+    name: "HTML",
+    class: "bg-[#f87b2a] text-white",
+    icon: HtmlIcon
+  },
+  JS: {
+    name: "JS",
+    class: "bg-[#f8d62a] text-white",
+    icon: JsIcon
+  }
+}
+const PROJECTS = [
+  {
+    title: "Gallery - Dev",
+    description: "Pagina web basada en busqueda de imagenes utilizando la API de Unsplash, utilizando tecnologias como React y Tailwind",
+    link: "https://gallery-dev-ten.vercel.app/",
+    github: "https://github.com/GabrielBustos0905/gallery-dev",
+    image: "/projects/gallery-dev.webp",
+    tags: [TAGS.React, TAGS.TAILWIND]
+  },
+  {
+    title: "SpaceX Launches",
+    description: "Pagina web que muestra informacion de lanzamientos de cohetes y satelites de la empresa SpaceX con el que utilizamos la API que brinda dicha empresa, Las tecnologias utilizadas fueron Astro y Tailwind",
+    link: "https://spacex-launches-three.vercel.app/",
+    github: "https://github.com/GabrielBustos0905/spacex-launches",
+    image: "/projects/spaceX-launches.webp",
+    tags: [TAGS.ASTRO, TAGS.TAILWIND]
+  },
+  {
+    title: "Dashboard Next JS",
+    description:
+      "Dashboard tomado del curso brindado por Vercel para el desarrollo en NextJs, pagina web Fullstack utilizando el framework NextJs. Iniciar sesion con el usuario: user@nextmail.com, contraseña: 123456",
+    link: "https://nextjs-dashboard-lime-five-76.vercel.app/",
+    github: "https://github.com/GabrielBustos0905/nextjs-dashboard",
+    image: "/projects/svgdashboard.webp",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  },
+  {
+    title: "TODO-APP",
+    description:
+      "Pagina web para anotar tareas futuras desarrollado utilizando React y Typescript, usando como framework de estilado Tailwind",
+    link: "https://todo-typescript-sand.vercel.app/",
+    github: "https://github.com/GabrielBustos0905/todo-typescript",
+    image: "/projects/svgtodoapp.webp",
+    tags: [TAGS.React, TAGS.TAILWIND],
+  },
+  {
+    title: "Clima Tacto",
+    description: "Una pagina web basada en la busqueda del clima en ciertas regiones que usted desee utilizando una APPI del clima. Tecnologias usadas: React y Tailwind",
+    link: "https://clima-tacto.vercel.app/",
+    github: "https://github.com/GabrielBustos0905/clima-tacto",
+    image: "/projects/clima-tacto.jpg",
+    tags: [TAGS.React, TAGS.TAILWIND]
+  },
+  {
+    title: "tic-tac-toe",
+    description: "Un juego bastante conocido y divertido, mi primer proyecto en solitario. Tecnologias utilizadas HTML, CSS y JS",
+    link: "https://tic-tac-toe-pink-ten.vercel.app/",
+    github: "https://github.com/GabrielBustos0905/tic-tac-toe",
+    image: "/projects/tic-tac-toe.png",
+    tags: [TAGS.HTML, TAGS.JS]
+  }
+]
+---
+
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(({ image, title, description, tags, link, github }) => (
+    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+  <div class="w-full md:w-1/2">
+    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+      <img alt="Imagen de proyecto" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+    </div>
+  </div>
+
+  <div class="w-full md:w-1/2 md:max-w-lg">
+    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+      {title}
+    </h3>
+    <div class="flex flex-wrap mt-2">
+      <ul class="flex flex-row mb-2 gap-x-2">
+          {tags.map((tag) => (
+            <li>
+              <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}>
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+      <footer class="flex items-end justify-start mt-4 gap-x-4">
+          {github && (
+            <LinkButton href={github}>
+              <GitHubIcon class="size-6" />
+              Code
+              
+            </LinkButton>
+          )}
+          {link && (
+            <LinkButton href={link}>
+              <LinkIcon class="size-4" />
+              Preview
+            </LinkButton>
+          )}
+        </footer>
+    </div>
+  </div>
+</article>
+    ))
+  }
+</div>
